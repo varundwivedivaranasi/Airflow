@@ -1,0 +1,24 @@
+docker run --rm -v "C:\Users\varun\Downloads\Azure\Airflow\dags:/opt/airflow/dags" apache/airflow:2.8.0 db init
+python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+
+
+docker-compose down
+docker-compose up -d
+airflow-airflow-apiserver-1
+
+docker-compose down --volumes --remove-orphans
+docker-compose up --build
+
+docker exec -it airflow-airflow-apiserver-1 airflow dags list
+docker exec -it airflow-airflow-apiserver-1 airflow dags list-import-errors
+docker exec -it airflow-airflow-apiserver-1 airflow tasks logs hello_world_dag say_hello_task <execution_date>
+
+docker logs airflow-airflow-scheduler-1
+
+
+
+docker restart airflow-airflow-scheduler-1
+
+
+
+
